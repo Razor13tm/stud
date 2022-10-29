@@ -54,6 +54,7 @@ class Results with _$Results {
     required String gender,
     // @HiveField(6)
     required String image,
+    required List<String> episode,
   }) = _Results;
 
   factory Results.fromJson(Map<String, dynamic> json) =>

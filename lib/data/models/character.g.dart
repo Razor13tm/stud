@@ -41,6 +41,8 @@ _$_Results _$$_ResultsFromJson(Map<String, dynamic> json) => _$_Results(
       type: json['type'] as String,
       gender: json['gender'] as String,
       image: json['image'] as String,
+      episode:
+          (json['episode'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$_ResultsToJson(_$_Results instance) =>
@@ -52,4 +54,5 @@ Map<String, dynamic> _$$_ResultsToJson(_$_Results instance) =>
       'type': instance.type,
       'gender': instance.gender,
       'image': instance.image,
+      'episode': instance.episode,
     };

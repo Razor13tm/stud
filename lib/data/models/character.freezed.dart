@@ -388,6 +388,7 @@ mixin _$Results {
   String get type => throw _privateConstructorUsedError; // @HiveField(5)
   String get gender => throw _privateConstructorUsedError; // @HiveField(6)
   String get image => throw _privateConstructorUsedError;
+  List<String> get episode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -406,7 +407,8 @@ abstract class $ResultsCopyWith<$Res> {
       String species,
       String type,
       String gender,
-      String image});
+      String image,
+      List<String> episode});
 }
 
 /// @nodoc
@@ -429,6 +431,7 @@ class _$ResultsCopyWithImpl<$Res, $Val extends Results>
     Object? type = null,
     Object? gender = null,
     Object? image = null,
+    Object? episode = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -459,6 +462,10 @@ class _$ResultsCopyWithImpl<$Res, $Val extends Results>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      episode: null == episode
+          ? _value.episode
+          : episode // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -477,7 +484,8 @@ abstract class _$$_ResultsCopyWith<$Res> implements $ResultsCopyWith<$Res> {
       String species,
       String type,
       String gender,
-      String image});
+      String image,
+      List<String> episode});
 }
 
 /// @nodoc
@@ -497,6 +505,7 @@ class __$$_ResultsCopyWithImpl<$Res>
     Object? type = null,
     Object? gender = null,
     Object? image = null,
+    Object? episode = null,
   }) {
     return _then(_$_Results(
       id: null == id
@@ -527,6 +536,10 @@ class __$$_ResultsCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      episode: null == episode
+          ? _value._episode
+          : episode // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -541,7 +554,9 @@ class _$_Results implements _Results {
       required this.species,
       required this.type,
       required this.gender,
-      required this.image});
+      required this.image,
+      required final List<String> episode})
+      : _episode = episode;
 
   factory _$_Results.fromJson(Map<String, dynamic> json) =>
       _$$_ResultsFromJson(json);
@@ -567,10 +582,16 @@ class _$_Results implements _Results {
 // @HiveField(6)
   @override
   final String image;
+  final List<String> _episode;
+  @override
+  List<String> get episode {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_episode);
+  }
 
   @override
   String toString() {
-    return 'Results(id: $id, name: $name, status: $status, species: $species, type: $type, gender: $gender, image: $image)';
+    return 'Results(id: $id, name: $name, status: $status, species: $species, type: $type, gender: $gender, image: $image, episode: $episode)';
   }
 
   @override
@@ -584,13 +605,14 @@ class _$_Results implements _Results {
             (identical(other.species, species) || other.species == species) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            const DeepCollectionEquality().equals(other._episode, _episode));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, status, species, type, gender, image);
+  int get hashCode => Object.hash(runtimeType, id, name, status, species, type,
+      gender, image, const DeepCollectionEquality().hash(_episode));
 
   @JsonKey(ignore: true)
   @override
@@ -614,7 +636,8 @@ abstract class _Results implements Results {
       required final String species,
       required final String type,
       required final String gender,
-      required final String image}) = _$_Results;
+      required final String image,
+      required final List<String> episode}) = _$_Results;
 
   factory _Results.fromJson(Map<String, dynamic> json) = _$_Results.fromJson;
 
@@ -632,6 +655,8 @@ abstract class _Results implements Results {
   String get gender;
   @override // @HiveField(6)
   String get image;
+  @override
+  List<String> get episode;
   @override
   @JsonKey(ignore: true)
   _$$_ResultsCopyWith<_$_Results> get copyWith =>

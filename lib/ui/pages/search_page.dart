@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:stud/bloc/character_bloc.dart';
+import 'package:stud/ui/pages/detail_page.dart';
 import 'package:stud/ui/widgets/custom_grid.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -9,6 +10,7 @@ import '../../data/models/character.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
+
   @override
   State<SearchPage> createState() => _SearchPageState();
 }
@@ -22,14 +24,13 @@ class _SearchPageState extends State<SearchPage> {
   final RefreshController refreshController = RefreshController();
   bool _isPagination = false;
 
-
   @override
   void initState() {
-          if (_currentResults.isEmpty) {
-        context
-            .read<CharacterBloc>()
-            .add(const CharacterEvent.fetch(name: '', page: 1));
-      }
+    if (_currentResults.isEmpty) {
+      context
+          .read<CharacterBloc>()
+          .add(const CharacterEvent.fetch(name: '', page: 1));
+    }
     super.initState();
   }
 
@@ -118,7 +119,12 @@ class _SearchPageState extends State<SearchPage> {
     return SmartRefresher(
       controller: refreshController,
       enablePullUp: true,
-      enablePullDown: false,
+      enablePullDown: true,
+      onRefresh: () {
+        context
+            .read<CharacterBloc>()
+            .add(const CharacterEvent.fetch(name: '', page: 1));
+      },
       onLoading: () {
         _isPagination = true;
         _currentPage++;
@@ -133,8 +139,8 @@ class _SearchPageState extends State<SearchPage> {
           itemCount: _currentResults.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
-            mainAxisSpacing: 5.0,
-            crossAxisSpacing: 5.0,
+            mainAxisSpacing: 3.0,
+            crossAxisSpacing: 3.0,
           ),
           itemBuilder: (context, index) {
             final result = currentResults[index];
@@ -143,13 +149,3 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 }
-
-// return ListView.separated(
-// itemCount: _currentResults.length,
-// separatorBuilder: (_, index) => const SizedBox(height: 5),
-// shrinkWrap: true,
-// itemBuilder: (context, index) {
-// final result = currentResults[index];
-// return CustomGrid(result: result);
-// },
-// );
