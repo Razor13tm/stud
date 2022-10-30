@@ -3,24 +3,18 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:stud/bloc_observable.dart';
-import 'package:stud/ui/pages/detail_page.dart';
+import 'package:stud/util/bloc_observable.dart';
 import 'package:stud/ui/pages/home_page.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import 'data/models/character.dart';
+
 void main() async {
-  // await Hive.initFlutter();
-  // Hive.registerAdapter(CharacterAdapter());
-  // Hive.registerAdapter(InfoAdapter());
-  // Hive.registerAdapter(ResultsAdapter());
-  // await Hive.openBox<Character>('character');
-  // await Hive.openBox<Info>('info');
-  // await Hive.openBox<Results>('results');
-
   WidgetsFlutterBinding.ensureInitialized();
-
-
-
+  await Hive.initFlutter();
+  Hive.registerAdapter(CharacterAdapter());
+  Hive.registerAdapter(InfoAdapter());
+  Hive.registerAdapter(ResultsAdapter());
   BlocOverrides.runZoned(() => runApp(const MyApp()),
       blocObserver: CharacterBlocObservable());
 }
@@ -47,7 +41,10 @@ class MyApp extends StatelessWidget {
           bodyText2: TextStyle(
               fontSize: 14, fontWeight: FontWeight.normal, color: Colors.white),
           caption: TextStyle(
-              fontSize: 18, fontWeight: FontWeight.w100, color: Colors.blue,),
+            fontSize: 18,
+            fontWeight: FontWeight.w100,
+            color: Colors.blue,
+          ),
         ),
       ),
       home: HomePage(title: 'Rick & Morty'),

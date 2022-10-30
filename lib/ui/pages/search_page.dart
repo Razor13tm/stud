@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:stud/bloc/character_bloc.dart';
-import 'package:stud/ui/pages/detail_page.dart';
+import 'package:stud/data/repo/local/character_db_service.dart';
 import 'package:stud/ui/widgets/custom_grid.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -20,6 +20,7 @@ class _SearchPageState extends State<SearchPage> {
   List<Results> _currentResults = [];
   int _currentPage = 1;
   String _currentSearchString = '';
+  CharacterDBService characterService = CharacterDBService();
 
   final RefreshController refreshController = RefreshController();
   bool _isPagination = false;

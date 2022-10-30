@@ -20,8 +20,9 @@ Character _$CharacterFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Character {
-// @HiveField(0)
-  Info get info => throw _privateConstructorUsedError; // @HiveField(1)
+  @HiveField(0)
+  Info get info => throw _privateConstructorUsedError;
+  @HiveField(1)
   List<Results> get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +36,7 @@ abstract class $CharacterCopyWith<$Res> {
   factory $CharacterCopyWith(Character value, $Res Function(Character) then) =
       _$CharacterCopyWithImpl<$Res, Character>;
   @useResult
-  $Res call({Info info, List<Results> results});
+  $Res call({@HiveField(0) Info info, @HiveField(1) List<Results> results});
 
   $InfoCopyWith<$Res> get info;
 }
@@ -84,7 +85,7 @@ abstract class _$$_CharacterCopyWith<$Res> implements $CharacterCopyWith<$Res> {
       __$$_CharacterCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Info info, List<Results> results});
+  $Res call({@HiveField(0) Info info, @HiveField(1) List<Results> results});
 
   @override
   $InfoCopyWith<$Res> get info;
@@ -120,19 +121,20 @@ class __$$_CharacterCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Character implements _Character {
-  const _$_Character({required this.info, required final List<Results> results})
+  const _$_Character(
+      {@HiveField(0) required this.info,
+      @HiveField(1) required final List<Results> results})
       : _results = results;
 
   factory _$_Character.fromJson(Map<String, dynamic> json) =>
       _$$_CharacterFromJson(json);
 
-// @HiveField(0)
   @override
+  @HiveField(0)
   final Info info;
-// @HiveField(1)
   final List<Results> _results;
-// @HiveField(1)
   @override
+  @HiveField(1)
   List<Results> get results {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_results);
@@ -173,15 +175,17 @@ class _$_Character implements _Character {
 
 abstract class _Character implements Character {
   const factory _Character(
-      {required final Info info,
-      required final List<Results> results}) = _$_Character;
+      {@HiveField(0) required final Info info,
+      @HiveField(1) required final List<Results> results}) = _$_Character;
 
   factory _Character.fromJson(Map<String, dynamic> json) =
       _$_Character.fromJson;
 
-  @override // @HiveField(0)
+  @override
+  @HiveField(0)
   Info get info;
-  @override // @HiveField(1)
+  @override
+  @HiveField(1)
   List<Results> get results;
   @override
   @JsonKey(ignore: true)
@@ -195,10 +199,13 @@ Info _$InfoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Info {
-// @HiveField(0)
-  int get count => throw _privateConstructorUsedError; //  @HiveField(1)
-  int get pages => throw _privateConstructorUsedError; //  @HiveField(2)
-  String? get next => throw _privateConstructorUsedError; //  @HiveField(3)
+  @HiveField(0)
+  int get count => throw _privateConstructorUsedError;
+  @HiveField(1)
+  int get pages => throw _privateConstructorUsedError;
+  @HiveField(2)
+  String? get next => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get prev => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -211,7 +218,11 @@ abstract class $InfoCopyWith<$Res> {
   factory $InfoCopyWith(Info value, $Res Function(Info) then) =
       _$InfoCopyWithImpl<$Res, Info>;
   @useResult
-  $Res call({int count, int pages, String? next, String? prev});
+  $Res call(
+      {@HiveField(0) int count,
+      @HiveField(1) int pages,
+      @HiveField(2) String? next,
+      @HiveField(3) String? prev});
 }
 
 /// @nodoc
@@ -259,7 +270,11 @@ abstract class _$$_InfoCopyWith<$Res> implements $InfoCopyWith<$Res> {
       __$$_InfoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int count, int pages, String? next, String? prev});
+  $Res call(
+      {@HiveField(0) int count,
+      @HiveField(1) int pages,
+      @HiveField(2) String? next,
+      @HiveField(3) String? prev});
 }
 
 /// @nodoc
@@ -301,21 +316,24 @@ class __$$_InfoCopyWithImpl<$Res> extends _$InfoCopyWithImpl<$Res, _$_Info>
 @JsonSerializable()
 class _$_Info implements _Info {
   const _$_Info(
-      {required this.count, required this.pages, this.next, this.prev});
+      {@HiveField(0) required this.count,
+      @HiveField(1) required this.pages,
+      @HiveField(2) this.next,
+      @HiveField(3) this.prev});
 
   factory _$_Info.fromJson(Map<String, dynamic> json) => _$$_InfoFromJson(json);
 
-// @HiveField(0)
   @override
+  @HiveField(0)
   final int count;
-//  @HiveField(1)
   @override
+  @HiveField(1)
   final int pages;
-//  @HiveField(2)
   @override
+  @HiveField(2)
   final String? next;
-//  @HiveField(3)
   @override
+  @HiveField(3)
   final String? prev;
 
   @override
@@ -354,20 +372,24 @@ class _$_Info implements _Info {
 
 abstract class _Info implements Info {
   const factory _Info(
-      {required final int count,
-      required final int pages,
-      final String? next,
-      final String? prev}) = _$_Info;
+      {@HiveField(0) required final int count,
+      @HiveField(1) required final int pages,
+      @HiveField(2) final String? next,
+      @HiveField(3) final String? prev}) = _$_Info;
 
   factory _Info.fromJson(Map<String, dynamic> json) = _$_Info.fromJson;
 
-  @override // @HiveField(0)
+  @override
+  @HiveField(0)
   int get count;
-  @override //  @HiveField(1)
+  @override
+  @HiveField(1)
   int get pages;
-  @override //  @HiveField(2)
+  @override
+  @HiveField(2)
   String? get next;
-  @override //  @HiveField(3)
+  @override
+  @HiveField(3)
   String? get prev;
   @override
   @JsonKey(ignore: true)
@@ -380,14 +402,21 @@ Results _$ResultsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Results {
-// @HiveField(0)
-  int get id => throw _privateConstructorUsedError; //  @HiveField(1)
-  String get name => throw _privateConstructorUsedError; //  @HiveField(2)
-  String get status => throw _privateConstructorUsedError; // @HiveField(3)
-  String get species => throw _privateConstructorUsedError; // @HiveField(4)
-  String get type => throw _privateConstructorUsedError; // @HiveField(5)
-  String get gender => throw _privateConstructorUsedError; // @HiveField(6)
+  @HiveField(0)
+  int get id => throw _privateConstructorUsedError;
+  @HiveField(1)
+  String get name => throw _privateConstructorUsedError;
+  @HiveField(2)
+  String get status => throw _privateConstructorUsedError;
+  @HiveField(3)
+  String get species => throw _privateConstructorUsedError;
+  @HiveField(4)
+  String get type => throw _privateConstructorUsedError;
+  @HiveField(5)
+  String get gender => throw _privateConstructorUsedError;
+  @HiveField(6)
   String get image => throw _privateConstructorUsedError;
+  @HiveField(7)
   List<String> get episode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -401,14 +430,14 @@ abstract class $ResultsCopyWith<$Res> {
       _$ResultsCopyWithImpl<$Res, Results>;
   @useResult
   $Res call(
-      {int id,
-      String name,
-      String status,
-      String species,
-      String type,
-      String gender,
-      String image,
-      List<String> episode});
+      {@HiveField(0) int id,
+      @HiveField(1) String name,
+      @HiveField(2) String status,
+      @HiveField(3) String species,
+      @HiveField(4) String type,
+      @HiveField(5) String gender,
+      @HiveField(6) String image,
+      @HiveField(7) List<String> episode});
 }
 
 /// @nodoc
@@ -478,14 +507,14 @@ abstract class _$$_ResultsCopyWith<$Res> implements $ResultsCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
-      String name,
-      String status,
-      String species,
-      String type,
-      String gender,
-      String image,
-      List<String> episode});
+      {@HiveField(0) int id,
+      @HiveField(1) String name,
+      @HiveField(2) String status,
+      @HiveField(3) String species,
+      @HiveField(4) String type,
+      @HiveField(5) String gender,
+      @HiveField(6) String image,
+      @HiveField(7) List<String> episode});
 }
 
 /// @nodoc
@@ -548,42 +577,43 @@ class __$$_ResultsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Results implements _Results {
   const _$_Results(
-      {required this.id,
-      required this.name,
-      required this.status,
-      required this.species,
-      required this.type,
-      required this.gender,
-      required this.image,
-      required final List<String> episode})
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.name,
+      @HiveField(2) required this.status,
+      @HiveField(3) required this.species,
+      @HiveField(4) required this.type,
+      @HiveField(5) required this.gender,
+      @HiveField(6) required this.image,
+      @HiveField(7) required final List<String> episode})
       : _episode = episode;
 
   factory _$_Results.fromJson(Map<String, dynamic> json) =>
       _$$_ResultsFromJson(json);
 
-// @HiveField(0)
   @override
+  @HiveField(0)
   final int id;
-//  @HiveField(1)
   @override
+  @HiveField(1)
   final String name;
-//  @HiveField(2)
   @override
+  @HiveField(2)
   final String status;
-// @HiveField(3)
   @override
+  @HiveField(3)
   final String species;
-// @HiveField(4)
   @override
+  @HiveField(4)
   final String type;
-// @HiveField(5)
   @override
+  @HiveField(5)
   final String gender;
-// @HiveField(6)
   @override
+  @HiveField(6)
   final String image;
   final List<String> _episode;
   @override
+  @HiveField(7)
   List<String> get episode {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_episode);
@@ -630,32 +660,40 @@ class _$_Results implements _Results {
 
 abstract class _Results implements Results {
   const factory _Results(
-      {required final int id,
-      required final String name,
-      required final String status,
-      required final String species,
-      required final String type,
-      required final String gender,
-      required final String image,
-      required final List<String> episode}) = _$_Results;
+      {@HiveField(0) required final int id,
+      @HiveField(1) required final String name,
+      @HiveField(2) required final String status,
+      @HiveField(3) required final String species,
+      @HiveField(4) required final String type,
+      @HiveField(5) required final String gender,
+      @HiveField(6) required final String image,
+      @HiveField(7) required final List<String> episode}) = _$_Results;
 
   factory _Results.fromJson(Map<String, dynamic> json) = _$_Results.fromJson;
 
-  @override // @HiveField(0)
+  @override
+  @HiveField(0)
   int get id;
-  @override //  @HiveField(1)
+  @override
+  @HiveField(1)
   String get name;
-  @override //  @HiveField(2)
+  @override
+  @HiveField(2)
   String get status;
-  @override // @HiveField(3)
+  @override
+  @HiveField(3)
   String get species;
-  @override // @HiveField(4)
+  @override
+  @HiveField(4)
   String get type;
-  @override // @HiveField(5)
+  @override
+  @HiveField(5)
   String get gender;
-  @override // @HiveField(6)
+  @override
+  @HiveField(6)
   String get image;
   @override
+  @HiveField(7)
   List<String> get episode;
   @override
   @JsonKey(ignore: true)

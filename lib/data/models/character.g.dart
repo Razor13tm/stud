@@ -3,6 +3,145 @@
 part of 'character.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class CharacterAdapter extends TypeAdapter<Character> {
+  @override
+  final int typeId = 1;
+
+  @override
+  Character read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Character(
+      info: fields[0] as Info,
+      results: (fields[1] as List).cast<Results>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Character obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.info)
+      ..writeByte(1)
+      ..write(obj.results);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CharacterAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class InfoAdapter extends TypeAdapter<Info> {
+  @override
+  final int typeId = 2;
+
+  @override
+  Info read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Info(
+      count: fields[0] as int,
+      pages: fields[1] as int,
+      next: fields[2] as String?,
+      prev: fields[3] as String?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Info obj) {
+    writer
+      ..writeByte(4)
+      ..writeByte(0)
+      ..write(obj.count)
+      ..writeByte(1)
+      ..write(obj.pages)
+      ..writeByte(2)
+      ..write(obj.next)
+      ..writeByte(3)
+      ..write(obj.prev);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is InfoAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class ResultsAdapter extends TypeAdapter<Results> {
+  @override
+  final int typeId = 3;
+
+  @override
+  Results read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Results(
+      id: fields[0] as int,
+      name: fields[1] as String,
+      status: fields[2] as String,
+      species: fields[3] as String,
+      type: fields[4] as String,
+      gender: fields[5] as String,
+      image: fields[6] as String,
+      episode: (fields[7] as List).cast<String>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Results obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.name)
+      ..writeByte(2)
+      ..write(obj.status)
+      ..writeByte(3)
+      ..write(obj.species)
+      ..writeByte(4)
+      ..write(obj.type)
+      ..writeByte(5)
+      ..write(obj.gender)
+      ..writeByte(6)
+      ..write(obj.image)
+      ..writeByte(7)
+      ..write(obj.episode);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ResultsAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 

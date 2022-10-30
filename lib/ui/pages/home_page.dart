@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stud/data/repo/character_repo.dart';
+import 'package:stud/data/repo/api_service.dart';
 import 'package:stud/ui/pages/search_page.dart';
 import '../../bloc/character_bloc.dart';
 
@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
   HomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
-  final repository = CharacterRepo();
+  final repository = ApiService();
 
   @override
   Widget build(BuildContext context) {
