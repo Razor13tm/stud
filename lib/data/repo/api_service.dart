@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:dio_logging_interceptor/dio_logging_interceptor.dart';
 import 'package:stud/data/models/character.dart';
 import 'package:dio/dio.dart';
-import 'package:http/http.dart' as http;
 import 'local/character_db_service.dart';
 
 const url = 'https://rickandmortyapi.com/api/character';
@@ -18,11 +17,8 @@ class ApiService {
       compact: false,
     ));
     try {
-      // var response2 =
-      // await dio.get((Uri.parse('$url?page=$page&name=$name')).toString());
-      var response = await http.get(Uri.parse('$url?page=$page&name=$name'));
-      var jsonResult = jsonDecode(response.body);
-      return Character.fromJson(jsonResult);
+      var response = await dio.get('$url?page=$page&name=$name');
+      return Character.fromJson(response.data);
     } catch (e) {
       throw Exception(e.toString());
     }
